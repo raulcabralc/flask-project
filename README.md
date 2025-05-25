@@ -1,2 +1,2 @@
 # flask-project
-Flask project I'm developing with a group in my university.
+Flask project I'm developing for my university.
