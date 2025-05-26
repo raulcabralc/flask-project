@@ -1,0 +1,83 @@
+.conteudo {
+  padding: 40px 190px;
+  display: flex;
+  flex-flow: column wrap;
+  position: relative;
+
+  h1 {
+    color: white;
+    position: relative;
+    padding-left: 25px;
+    font-size: 2.5em;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: white;
+      height: 100%;
+      width: 4px;
+      border-radius: 50px;
+      box-shadow: 0 0 15px 2px rgba(255, 255, 255, 0.5);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: linear-gradient(to right, rgba(63, 135, 241, 0.4) 40%, rgba(173, 120, 177, 0.4), rgba(180, 73, 96, 0.4), transparent);
+      height: 100%;
+      width: 230px;
+      z-index: -1;
+    }
+  }
+
+  .messages-area {
+    height: 62vh;
+    padding: 10px 60px 10px 40px;
+  }
+
+  .user-input {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    padding: 0 40px;
+    padding-right: 60px;
+
+    input {
+      width: 100%;
+      padding: 10px 20px;
+      font-size: 1.5em;
+      font-family: "Outfit", "Montserrat", sans-serif;
+      background: #212121;
+      border: 2px solid #323232;
+      color: #ddd;
+      border-radius: 30px;
+    }
+
+    button {
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-size: 1.4em;
+      padding: 15px;
+      background: #212121;
+      border: 2px solid #323232;
+      border-radius: 100px;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+
+      &:hover {
+        filter: brightness(120%)
+      }
+
+      &:active {
+        filter: brightness(130%)
+      }
+    }
+  }
+}

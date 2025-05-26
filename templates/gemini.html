@@ -1,0 +1,15 @@
+{% extends "modelo.html" %} {%block conteudo %} <link rel="stylesheet" href="{{
+url_for("static", filename="gemini/geminiStyles.css") }}" />
+
+<h1>Gemini AI</h1>
+<div class="chat">
+  <div class="messages-area"></div>
+  <form class="user-input" name="user-input" method="POST">
+    <input type="text" placeholder="O que você quer saber?" />
+    <button type="submit" class="enviar">
+      <i class="fa-solid fa-paper-plane"></i>
+    </button>
+  </form>
+</div>
+
+{% endblock %}
