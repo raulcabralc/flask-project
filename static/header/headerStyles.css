@@ -1,0 +1,49 @@
+.header {
+  width: 100%;
+  height: 100px;
+  background: #060e1f;
+  color: white;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 0 0 0 15px 10px rgba(0, 0, 0, 0.4);
+}
+.header img {
+  width: 80px;
+  height: auto;
+}
+.header ul {
+  display: flex;
+  list-style: none;
+  gap: 80px;
+}
+.header a {
+  color: white;
+  text-decoration: none;
+  transition: all ease-in-out 0.15s;
+}
+.header a.options {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+.header a.options:hover {
+  color: #0c1443;
+  background: white;
+  box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.4);
+}
+.header a.playground {
+  background: #0f0f0f;
+  font-size: 1.3em;
+  font-weight: 700;
+  font-family: "Outfit", sans-serif;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+.header a.gemini:hover {
+  background: linear-gradient(to right, #3f87f1 50%, #ad78b1, #b44960);
+}/*# sourceMappingURL=headerStyles.css.map */

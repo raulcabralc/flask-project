@@ -9,7 +9,7 @@ app = Flask(__name__)
 def principal():
     return render_template('index.html')
 
-@app.route('/sobre_a_equipe')
+@app.route('/equipe')
 
 def sobre_a_equipe():
     return render_template('sobre.html')

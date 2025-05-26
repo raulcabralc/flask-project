@@ -1,5 +1,172 @@
-{% extends "modelo.html" %}
-{% block conteudo %}
-    <h1> Hello World! </h1>
-<a href="/sobre_a_equipe"> oieee </a>
+{% extends "modelo.html" %} {% block conteudo %} <link rel="stylesheet" href="{{
+url_for("static", filename="index/indexStyles.css") }}" />
+
+<div class="home-text">
+  <div class="pythonsos">
+    <h1>Python<span>SOS</span></h1>
+  </div>
+
+  <h2>O que é Python?</h2>
+
+  <div class="home-p">
+    <p>
+      <span class="python-p">Python</span> é uma das linguagens mais populares e
+      versáteis do mundo, ideal tanto para iniciantes quanto profissionais
+      experientes. Sua sintaxe simples e legível permite aprender programação de
+      forma natural, enquanto sua versatilidade abre portas para áreas como
+      <span class="sos-p"
+        >desenvolvimento web, ciência de dados, inteligência artificial e
+        automação.</span
+      >
+    </p>
+
+    <p>
+      Com <span class="python-p">alta demanda no mercado de trabalho</span> e
+      uma comunidade ativa e acolhedora, Python oferece excelentes oportunidades
+      de carreira. Seu rico ecossistema de bibliotecas e frameworks acelera o
+      desenvolvimento, tornando-o a
+      <span class="sos-p"
+        >escolha perfeita para quem busca produtividade e relevância</span
+      >
+      no cenário tecnológico atual.
+    </p>
+  </div>
+</div>
+
+<div class="sintaxes">
+  <h1>Sintaxe</h1>
+
+  <div class="row">
+    <div class="row-text">
+      <h2>Estruturas de Seleção</h2>
+      <p>
+        As estruturas de seleção controlam o fluxo do programa baseado em
+        condições. Em Python, utilizamos <span class="yellow">if</span>,
+        <span class="yellow">elif</span> e <span class="yellow">else</span> para
+        criar decisões lógicas. Essas estruturas permitem que o programa execute
+        diferentes blocos de código dependendo de condições verdadeiras ou
+        falsas. A sintaxe é simples e usa indentação para delimitar os blocos de
+        código.
+      </p>
+    </div>
+    <div class="code">
+      <pre>
+<code><span class="text">idade</span> <span class="keyword">=</span> <span class="number">18</span>
+<span class="keyword">if</span> <span class="text">idade</span> <span class="keyword">>=</span> <span class="number">18</span><span class="text">:</span>
+    <span class="builtin">print</span><span class="text">(</span><span class="string">"Maior de idade"</span><span class="text">)</span>
+<span class="keyword">elif</span> <span class="text">idade</span> <span class="keyword">>=</span> <span class="number">16</span><span class="text">:</span>
+    <span class="builtin">print</span><span class="text">(</span><span class="string">"Pode votar"</span><span class="text">)</span>
+<span class="keyword">else</span><span class="text">:</span>
+    <span class="builtin">print</span><span class="text">(</span><span class="string">"Menor de idade"</span><span class="text">)</span></code></pre>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="code">
+      <pre>
+<code><span class="comment"># Loop for</span>
+<span class="keyword">for</span> <span class="text">i</span> <span class="keyword">in</span> <span class="builtin">range</span><span class="text">(</span><span class="number">5</span><span class="text">):</span>
+    <span class="builtin">print</span><span class="text">(</span><span class="string">f"Contando: </span><span class="text">{</span><span class="text">i</span><span class="text">}</span><span class="string">"</span><span class="text">)</span>
+
+<span class="comment"># Loop while</span>
+<span class="text">contador</span> <span class="keyword">=</span> <span class="number">0</span>
+<span class="keyword">while</span> <span class="text">contador</span> <span class="keyword"><</span> <span class="number">3</span><span class="text">:</span>
+    <span class="builtin">print</span><span class="text">(</span><span class="string">f"Repetição </span><span class="text">{</span><span class="text">contador</span><span class="text">}</span><span class="string">"</span><span class="text">)</span>
+    <span class="text">contador</span> <span class="keyword">+=</span> <span class="number">1</span></code></pre>
+    </div>
+    <div class="row-text">
+      <h2>Estruturas de Repetição</h2>
+      <p>
+        Python oferece loops <span class="yellow">for</span> e
+        <span class="yellow">while</span> para repetir operações. O loop
+        <span class="yellow">for</span> é ideal para iterar sobre sequências
+        (listas, strings, ranges), enquanto
+        <span class="yellow">while</span> repete enquanto uma condição for
+        verdadeira. Também temos comandos de controle como
+        <span class="yellow">break</span> (sair do loop) e
+        <span class="yellow">continue</span> (pular para próxima iteração).
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="row-text">
+      <h2>Vetores e Matrizes</h2>
+      <p>
+        Em Python, trabalhamos principalmente com listas para representar
+        vetores. Listas são estruturas dinâmicas que podem armazenar diferentes
+        tipos de dados. Para matrizes, usamos listas aninhadas (lista de listas)
+        ou bibliotecas como NumPy para operações matemáticas mais avançadas. As
+        listas suportam indexação, fatiamento e diversos métodos de manipulação.
+      </p>
+    </div>
+    <div class="code">
+      <pre>
+<code><span class="comment"># Lista (vetor)</span>
+<span class="text">frutas</span> <span class="keyword">=</span> <span class="text">[</span><span class="string">"maçã"</span><span class="text">,</span> <span class="string">"banana"</span><span class="text">,</span> <span class="string">"uva"</span><span class="text">]</span>
+<span class="builtin">print</span><span class="text">(</span><span class="text">frutas</span><span class="text">[</span><span class="number">0</span><span class="text">])</span>  <span class="comment"># Acessa primeiro elemento</span>
+
+<span class="comment"># Matriz (lista de listas)</span>
+<span class="text">matriz</span> <span class="keyword">=</span> <span class="text">[[</span><span class="number">1</span><span class="text">,</span> <span class="number">2</span><span class="text">,</span> <span class="number">3</span><span class="text">],</span> <span class="text">[</span><span class="number">4</span><span class="text">,</span> <span class="number">5</span><span class="text">,</span> <span class="number">6</span><span class="text">],</span> <span class="text">[</span><span class="number">7</span><span class="text">,</span> <span class="number">8</span><span class="text">,</span> <span class="number">9</span><span class="text">]]</span>
+<span class="builtin">print</span><span class="text">(</span><span class="text">matriz</span><span class="text">[</span><span class="number">1</span><span class="text">][</span><span class="number">2</span><span class="text">])</span>  <span class="comment"># Linha 1, coluna 2</span></code></pre>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="code">
+      <pre>
+<code><span class="keyword">def</span> <span class="function">saudacao</span><span class="text">(</span><span class="parameter">nome</span><span class="text">):</span>
+    <span class="keyword">return</span> <span class="string">f"Olá, </span><span class="text">{</span><span class="text">nome</span><span class="text">}</span><span class="string">!"</span>
+
+<span class="keyword">def</span> <span class="function">mostrar_info</span><span class="text">(</span><span class="parameter">nome</span><span class="text">,</span> <span class="parameter">idade</span><span class="keyword">=</span><span class="number">25</span><span class="text">):</span>  <span class="comment"># Parâmetro padrão</span>
+    <span class="builtin">print</span><span class="text">(</span><span class="string">f"Nome: </span><span class="text">{</span><span class="text">nome</span><span class="text">}</span><span class="string">, Idade: </span><span class="text">{</span><span class="text">idade</span><span class="text">}</span><span class="string">"</span><span class="text">)</span>
+
+<span class="comment"># Chamando as funções</span>
+<span class="text">mensagem</span> <span class="keyword">=</span> <span class="text">saudacao</span><span class="text">(</span><span class="string">"Maria"</span><span class="text">)</span>
+<span class="builtin">print</span><span class="text">(</span><span class="text">mensagem</span><span class="text">)</span>
+<span class="text">mostrar_info</span><span class="text">(</span><span class="string">"João"</span><span class="text">,</span> <span class="number">30</span><span class="text">)</span></code></pre>
+    </div>
+    <div class="row-text">
+      <h2>Funções e Procedimentos</h2>
+      <p>
+        Funções em Python são definidas com <span class="yellow">def</span> e
+        podem receber parâmetros e retornar valores. Elas promovem reutilização
+        de código e modularização. Python não distingue formalmente entre
+        funções e procedimentos - uma função que não retorna valor
+        explicitamente retorna <span class="yellow">None</span>. Suportam
+        parâmetros padrão, argumentos nomeados e quantidade variável de
+        parâmetros.
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="row-text">
+      <h2>Tratamento de Exceções</h2>
+      <p>
+        O tratamento de exceções usa blocos <span class="yellow">try</span>,
+        <span class="yellow">except</span>, <span class="yellow">else</span> e
+        <span class="yellow">finally</span> para capturar e gerenciar erros
+        durante a execução. Isso permite que o programa continue funcionando
+        mesmo quando ocorrem problemas, oferecendo uma forma elegante de lidar
+        com situações inesperadas como divisão por zero, arquivos inexistentes
+        ou dados inválidos.
+      </p>
+    </div>
+    <div class="code">
+      <pre>
+<code><span class="keyword">try</span><span class="text">:</span>
+    <span class="text">numero</span> <span class="keyword">=</span> <span class="builtin">int</span><span class="text">(</span><span class="builtin">input</span><span class="text">(</span><span class="string">"Digite um número: "</span><span class="text">))</span>
+    <span class="text">resultado</span> <span class="keyword">=</span> <span class="number">10</span> <span class="keyword">/</span> <span class="text">numero</span>
+    <span class="builtin">print</span><span class="text">(</span><span class="string">f"Resultado: </span><span class="text">{</span><span class="text">resultado</span><span class="text">}</span><span class="string">"</span><span class="text">)</span>
+<span class="keyword">except</span> <span class="function">ValueError</span><span class="text">:</span>
+    <span class="builtin">print</span><span class="text">(</span><span class="string">"Erro: Digite apenas números"</span><span class="text">)</span>
+<span class="keyword">except</span> <span class="function">ZeroDivisionError</span><span class="text">:</span>
+    <span class="builtin">print</span><span class="text">(</span><span class="string">"Erro: Não é possível dividir por zero"</span><span class="text">)</span>
+<span class="keyword">finally</span><span class="text">:</span>
+    <span class="builtin">print</span><span class="text">(</span><span class="string">"Operação finalizada"</span><span class="text">)</span></code></pre>
+    </div>
+  </div>
+</div>
+
 {% endblock %}
