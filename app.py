@@ -3,6 +3,7 @@ import os
 import csv
 import google.generativeai as genai
 from dotenv import load_dotenv
+from markdown import markdown
 
 app = Flask(__name__)
 
@@ -16,11 +17,11 @@ if not GEMINI_API_KEY:
 genai.configure(api_key=GEMINI_API_KEY)
 
 @app.route('/')
-def principal():
+def index():
     return render_template('index.html')
 
 @app.route('/equipe')
-def sobre_a_equipe():
+def equipe():
     return render_template('sobre.html')
 
 @app.route('/glossario')
@@ -59,22 +60,23 @@ def gemini():
     if request.method == 'GET':
         return render_template("gemini.html")
     
-    pergunta = request.form.get("user-input")
+    data = request.get_json()
+    pergunta = data.get("message") if data else None
     
     if not pergunta:
-        return render_template("gemini.html", error="Por favor, insira uma pergunta.")
+        return jsonify({"error": "Por favor, insira uma pergunta."}), 400
     
     try:
-        # Create the generative model
-        model = genai.GenerativeModel('gemini-pro')
+        model = genai.GenerativeModel('gemini-1.5-flash', system_instruction='Você é um professor de programação que ensina em português brasileiro e ajuda pessoas com dificuldade em Python; suas respostas não devem ser muito longas, sem usar símbolos como #, ``` ou markdown; utilize sempre tags HTML: use <code> apenas para mostrar exemplos completos de código com a estrutura exata (<br /><pre><code><div class="code"><span class="text">idade</span> <span class="keyword">=</span> <span class="number">18</span><span class="keyword">if</span> <span class="text">idade</span> <span class="keyword">>=</span> <span class="number">18</span><span class="text">:</span><span class="builtin">print</span><span class="text">(</span><span class="string">"Maior de idade"</span><span class="text">)</span><span class="keyword">elif</span> <span class="text">idade</span> <span class="keyword">>=</span> <span class="number">16</span><span class="text">:</span> <span class="builtin">print</span><span class="text">(</span><span class="string">"Pode votar"</span><span class="text">)</span><span class="keyword">else</span><span class="text">:</span><span class="builtin">print</span><span class="text">(</span><span class="string">"Menor de idade"</span><span class="text">)</span></div></code></pre><br />), sem modificar nada dentro dessa estrutura, é importante que os <br /> sejam colocados no início e no final do <div class="code">; ao mencionar termos como for, if, switch ou métodos como enter, exit, use apenas <span class="code-example">palavra</span>; é proibido usar <code> para destacar termos isolados, use sempre <span class="code-example">; Atente-se na identação do código, ela é de extrema importância.')
         
-        # Generate content
         response = model.generate_content(pergunta)
+
+        htmlResponse = markdown(response.text)
         
-        return render_template("gemini.html", response=response.text)
+        return jsonify({"response": htmlResponse})
     
     except Exception as e:
-        return render_template("gemini.html", error=f"Erro ao processar pergunta: {str(e)}")
+        return jsonify({"error": f"Erro ao processar pergunta: {str(e)}"}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
