@@ -38,13 +38,13 @@ body {
   top: 0;
   background: linear-gradient(to right, rgba(63, 135, 241, 0.4) 40%, rgba(173, 120, 177, 0.4), rgba(180, 73, 96, 0.4), transparent);
   height: 100%;
-  width: 230px;
+  width: 270px;
   z-index: -1;
 }
 .conteudo h1 img {
   width: 40px;
   height: 40px;
-  margin-left: 10px;
+  margin-right: 10px;
 }
 .conteudo .messages-area {
   height: 62vh;
@@ -76,6 +76,9 @@ body {
   color: rgb(223, 14, 14);
   font-family: "Cascadia Code", "Outfit", "Montserrat", sans-serif;
   font-size: 16px;
+}
+.conteudo .message code {
+  color: rgb(223, 14, 14);
 }
 .conteudo .message code,
 .conteudo .message pre {

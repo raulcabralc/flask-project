@@ -3,9 +3,18 @@ url_for("static", filename="gemini/geminiStyles.css") }}" />
 
 <title>PythonSOS | Gemini</title>
 
-<h1>Gemini AI <img src="../static/images/google-gemini-icon.png" /></h1>
+<h1><img src="../static/images/google-gemini-icon.png" />Gemini AI</h1>
 <div class="chat">
-  <div class="messages-area" id="messages-area"></div>
+  <div class="messages-area" id="messages-area">
+    <div class="message ai-message">
+      <p>
+        Olá! Sou um assistente de programação em Python, aqui para te ajudar a
+        aprender e resolver problemas. Posso explicar conceitos, dar exemplos de
+        código e te auxiliar na resolução de dúvidas. Meu objetivo é tornar seu
+        aprendizado de Python mais fácil e eficiente. Vamos começar?
+      </p>
+    </div>
+  </div>
   <div class="user-input">
     <input type="text" id="user-input" placeholder="O que você quer saber?" />
     <button class="enviar" id="send-button">

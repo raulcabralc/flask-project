@@ -1,0 +1,121 @@
+.conteudo {
+
+  h1 {
+    color: white;
+    position: relative;
+    padding-left: 25px;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-content: center;
+    align-items: center;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: white;
+      height: 100%;
+      width: 4px;
+      border-radius: 50px;
+      box-shadow: 0 0 15px 4px rgba(255, 255, 255, 0.5);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: linear-gradient(to right, rgba(255, 255, 255, 0.2), transparent);
+      height: 100%;
+      width: 270px;
+      z-index: -1;
+    }
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0 30px;
+  }
+
+  .pessoa {
+    font-family: "Outfit", "Montserrat", sans-serif;
+    width: 250px;
+    background: #1f1f1f;
+    border-radius: 5px;
+    box-shadow: 0 0 15px 10px rgba(0, 0, 0, 1);
+
+    h2 {
+      font-weight: 400;
+      margin-left: 3px;
+    }
+
+    .pessoa-padding {
+      display: flex;
+      flex-flow: column wrap;
+      gap: 15px;
+      padding: 10px;
+    }
+
+    .pessoa-img {
+      height: 230px;
+      width: 230px;
+      padding: 10px;
+      border-radius: 10px;
+      border: 3px solid #303030;
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: top;
+        border-radius: 5px;
+      }
+    }
+
+    .links {
+      width: 100%;
+      display: flex;
+      flex-flow: column wrap;
+      text-align: center;
+      font-family: "Montserrat", "Outfit", "Montserrat", sans-serif;
+      font-weight: 400;
+      margin-top: 10px;
+
+      a {
+        padding: 7px;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: white;
+        transition: all ease-in-out 0.1s;
+
+        &:last-child {
+          border-radius: 0 0 5px 5px;
+        }
+
+        &:hover {
+          filter: brightness(85%);
+        }
+      }
+
+      .linkedin {
+        background: rgb(0, 119, 181);
+      }
+
+      .portfolio {
+        background: rgb(47, 47, 47);
+      }
+
+      .github {
+        background: black;
+      }
+
+      .whatsapp {
+        background: #4a954b;
+      }
+    }
+  }
+}

@@ -1,12 +1,98 @@
 {% extends "modelo.html" %} {% block conteudo %}
+<link
+  rel="stylesheet"
+  href="{{
+url_for('static', filename='sobre/sobreStyles.css') }}"
+/>
 
-<title>PythonSOS | Equipe</title>
+<h1>Equipe</h1>
 
-<h2>Bala's team</h2>
-<ul>
-  <li>Raulzera - Full Stack Developer</li>
-  <li>Hardman - Cria geral</li>
-  <li>Bulletinthedoll - CyberSecurity Manager</li>
-  <li>GiGaMoRtO - Dodoi da Cabeça</li>
-</ul>
+<div class="grid">
+  <div class="pessoa">
+    <div class="pessoa-padding">
+      <h2>Raul Cabral</h2>
+      <div class="pessoa-img">
+        <img src="../static/images/raul.jpg" alt="Imagem Pessoa" />
+      </div>
+    </div>
+    <div class="links">
+      <a class="linkedin" href="https://www.linkedin.com/in/raul-cabral-caxeta/"
+        ><i class="fa-brands fa-linkedin"></i> Linkedin</a
+      >
+      <a class="github" href="https://github.com/raulcabralc"
+        ><i class="fa-brands fa-github"></i> Github</a
+      >
+      <a class="whatsapp" href="https://github.com/raulcabralc"
+        ><i class="fa-brands fa-whatsapp"></i> Whatsapp</a
+      >
+      <a class="portfolio" href="https://raulcabral.netlify.app/"
+        ><i class="fa-solid fa-earth-americas"></i> Portfólio</a
+      >
+    </div>
+  </div>
+
+  <div class="pessoa">
+    <div class="pessoa-padding">
+      <h2>João Bullet</h2>
+      <div class="pessoa-img">
+        <img src="../static/images/bullet.jpg" alt="Imagem Pessoa" />
+      </div>
+    </div>
+    <div class="links">
+      <a class="linkedin" href="#"
+        ><i class="fa-brands fa-linkedin"></i> Linkedin</a
+      >
+      <a class="github" href="#"><i class="fa-brands fa-github"></i> Github</a>
+      <a class="whatsapp" href="https://github.com/raulcabralc"
+        ><i class="fa-brands fa-whatsapp"></i> Whatsapp</a
+      >
+      <a class="portfolio" href="#"
+        ><i class="fa-solid fa-earth-americas"></i> Portfólio</a
+      >
+    </div>
+  </div>
+
+  <div class="pessoa">
+    <div class="pessoa-padding">
+      <h2>Diego Hardman</h2>
+      <div class="pessoa-img">
+        <img src="../static/images/diego.jpeg" alt="Imagem Pessoa" />
+      </div>
+    </div>
+    <div class="links">
+      <a class="linkedin" href="#"
+        ><i class="fa-brands fa-linkedin"></i> Linkedin</a
+      >
+      <a class="github" href="#"><i class="fa-brands fa-github"></i> Github</a>
+      <a class="whatsapp" href="https://github.com/raulcabralc"
+        ><i class="fa-brands fa-whatsapp"></i> Whatsapp</a
+      >
+      <a class="portfolio" href="#"
+        ><i class="fa-solid fa-earth-americas"></i> Portfólio</a
+      >
+    </div>
+  </div>
+
+  <div class="pessoa">
+    <div class="pessoa-padding">
+      <h2>Giga</h2>
+      <div class="pessoa-img">
+        <img src="../static/images/giga.jpeg" alt="Imagem Pessoa" />
+      </div>
+    </div>
+    <div class="links">
+      <a class="linkedin" href="#"
+        ><i class="fa-brands fa-linkedin"></i> Linkedin</a
+      >
+      <a class="github" href="#"><i class="fa-brands fa-github"></i> Github</a>
+      <a class="whatsapp" href="https://github.com/raulcabralc"
+        ><i class="fa-brands fa-whatsapp"></i> Whatsapp</a
+      >
+      <a class="portfolio" href="#"
+        ><i class="fa-solid fa-earth-americas"></i> Portfólio</a
+      >
+    </div>
+  </div>
+</div>
+
 {% endblock %}
