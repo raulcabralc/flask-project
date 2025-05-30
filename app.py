@@ -40,20 +40,42 @@ def glossario():
     
     return render_template('glossario.html', glossario=glossario_de_termos)
 
-@app.route('/novo_termo')
-def novo_termo():
-    return render_template('novo_termo.html')
-
-@app.route('/criar_termo', methods=['POST'])
+@app.route('/glossario/adicionar', methods=["GET", 'POST'])
 def criar_termo():
-    termo = request.form['termo']
-    definicao = request.form['definicao']
+    if request.method == "GET":
+        return render_template("add-term.html")
+
+    data = request.get_json()
+    termo = data.get("termo") if data else None
+    definicao = data.get("definicao") if data else None
+
+    if os.path.exists('bd_glossario.csv') and os.path.getsize('bd_glossario.csv') > 0:
+        with open('bd_glossario.csv', 'rb') as arquivo:
+            arquivo.seek(-1, 2)
+            ultimo_char = arquivo.read(1)
+            
+        if ultimo_char != b'\n':
+            with open('bd_glossario.csv', 'a', encoding='UTF-8') as arquivo:
+                arquivo.write('\n')
     
     with open('bd_glossario.csv', 'a', newline='', encoding='UTF-8') as arquivo:
         writer = csv.writer(arquivo, delimiter=';')
         writer.writerow([termo, definicao])
+
+@app.route('/glossario/apagar/<id>')
+def apagar_termo(id):
+    with open('bd_glossario.csv', 'r', encoding='UTF-8') as arquivo:
+        file = arquivo.read().split("\n")
+        if file:
+            newId = int(id) - 1
+            file.pop(newId)
+            fileJoined = "\n".join(file)
+            with open("bd_glossario.csv", "w", encoding="UTF-8") as newFile:
+                newFile.write(fileJoined)
     
     return redirect(url_for('glossario'))
+
+
 
 @app.route('/gemini', methods=['GET', 'POST'])
 def gemini():

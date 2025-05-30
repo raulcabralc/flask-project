@@ -1,0 +1,202 @@
+.conteudo {
+  h1 {
+    color: white;
+    position: relative;
+    padding-left: 25px;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-content: center;
+    align-items: center;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: white;
+      height: 100%;
+      width: 4px;
+      border-radius: 50px;
+      box-shadow: 0 0 15px 4px rgba(255, 255, 255, 0.5);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: linear-gradient(to right, rgba(255, 255, 255, 0.2), transparent);
+      height: 100%;
+      width: 270px;
+      z-index: -1;
+    }
+  }
+
+  .container {
+    .adicionar {
+      padding: 10px;
+      border: 3px solid #303030;
+      border-bottom: 3px solid #131313;
+      border-radius: 5px;
+      background: #131313;
+      position: relative;
+      top: 7px;
+      left: 0;
+      width: max-content;
+      z-index: 2;
+      box-shadow: 0 -7px 15px rgba(255, 255, 255, 0.1);
+
+      a {
+        text-decoration: none;
+        color: #f0bc30;
+        font-weight: 500;
+        font-family: "Outfit", "Montserrat", sans-serif;
+        font-size: 18px;
+        text-align: center;
+      }
+    }
+
+    .table-container {
+      padding: 10px;
+      border: 3px solid #303030;
+      border-radius: 5px;
+      background: #131313;
+      box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.4);
+      position: relative;
+
+      table {
+        gap: 0;
+        border-collapse: collapse;
+
+        thead {
+
+          tr,
+          th,
+          td {
+            padding: 15px;
+            padding-top: 5px;
+          }
+
+          th {
+            text-align: center;
+          }
+        }
+
+        tbody {
+
+          tr,
+          th,
+          td {
+            padding: 15px;
+          }
+
+          tr {
+            border-top: 3px solid #303030;
+
+            &:not(:first-child) {
+              border-top: 2px solid #202020;
+            }
+
+            &:nth-child(even) {
+              background: #161616;
+            }
+
+            .termo {
+              color: #f0bc30;
+              font-weight: 500;
+              font-family: "Outfit", "Montserrat", sans-serif;
+              font-size: 18px;
+              position: relative;
+              text-align: center;
+
+              &::after {
+                content: "";
+                position: absolute;
+                background: #404040;
+                border-radius: 30px;
+                height: 25%;
+                width: 2px;
+                top: 50%;
+                left: 0;
+                transform: translate(0, -50%);
+              }
+            }
+
+            .definicao {
+              position: relative;
+              padding: 20px;
+              text-indent: 10px;
+              line-height: 17px;
+
+              &::after {
+                content: "";
+                position: absolute;
+                background: #404040;
+                border-radius: 30px;
+                height: 25%;
+                width: 2px;
+                top: 50%;
+                left: 0;
+                transform: translate(0, -50%);
+              }
+
+              &::before {
+                content: "";
+                position: absolute;
+                background: #404040;
+                border-radius: 30px;
+                height: 25%;
+                width: 2px;
+                top: 50%;
+                right: 0;
+                transform: translate(0, -50%);
+              }
+            }
+
+            .apagar-editar {
+              display: flex;
+              flex-flow: column wrap;
+              text-align: center;
+              gap: 5px;
+
+              a {
+                font-weight: 500;
+                font-family: "Outfit", "Montserrat", sans-serif;
+                font-size: 18px;
+                text-align: center;
+                text-decoration: none;
+                position: relative;
+
+                &.red {
+                  color: #f03030;
+
+                  &::after {
+                    content: "";
+                    position: absolute;
+                    height: 2px;
+                    width: 10px;
+                    background: #303030;
+                    bottom: -5px;
+                    left: 50%;
+                    border-radius: 30px;
+                    transform: translate(-50%, 0);
+                  }
+                }
+
+                &.blue {
+                  color: #3050f0;
+                }
+              }
+            }
+          }
+
+          th {
+            font-weight: 300;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{% extends "modelo.html" %} {% block conteudo %}
+<link
+  rel="stylesheet"
+  href="{{
+url_for('static', filename='add-term/add-termStyles.css') }}"
+/>
+
+<title>PythonSOS | Adicionar Termo</title>
+
+<h1>Adicionar Termo</h1>
+
+<div class="container">
+  <h2>Termo:</h2>
+  <input
+    type="text"
+    class="termo validate"
+    id="termo"
+    placeholder="Nome do termo"
+  />
+
+  <h2>Descrição do termo:</h2>
+  <textarea
+    type="text"
+    class="definicao validate"
+    id="definicao"
+    placeholder="Descrição do termo"
+    maxlength="300"
+  ></textarea>
+
+  <div class="char-counter"><span id="counter">0</span> / 300</div>
+
+  <a href="/glossario" id="button">Adicionar</a>
+</div>
+
+<script src="{{ url_for('static', filename='js/add-term.js') }}"></script>
+{% endblock %}

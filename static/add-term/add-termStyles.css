@@ -1,0 +1,98 @@
+.conteudo h1 {
+  color: white;
+  position: relative;
+  padding-left: 25px;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-content: center;
+  align-items: center;
+}
+.conteudo h1::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: white;
+  height: 100%;
+  width: 4px;
+  border-radius: 50px;
+  box-shadow: 0 0 15px 4px rgba(255, 255, 255, 0.5);
+}
+.conteudo h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.2), transparent);
+  height: 100%;
+  width: 270px;
+  z-index: -1;
+}
+.conteudo .container {
+  padding: 20px 80px;
+  display: flex;
+  flex-flow: column wrap;
+  gap: 15px;
+}
+.conteudo .container input,
+.conteudo .container textarea {
+  width: 100%;
+  padding: 15px 20px;
+  font-size: 1.2em;
+  font-family: "Montserrat", "Outfit", sans-serif;
+  background: #212121;
+  border: 2px solid #323232;
+  color: #ddd;
+  border-radius: 10px;
+  transition: all ease-in-out 0.15s;
+  resize: none;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+.conteudo .container input:focus,
+.conteudo .container textarea:focus {
+  filter: brightness(120%);
+  outline: none;
+}
+.conteudo input.termo {
+  width: 300px;
+}
+.conteudo .definicao {
+  height: 170px;
+}
+.conteudo .char-counter {
+  font-family: "Outfit", "Montserrat", sans-serif;
+  align-self: flex-end;
+  color: #ccc;
+}
+.conteudo .char-counter #counter {
+  font-weight: 500;
+  color: white;
+  font-size: 22px;
+}
+.conteudo a {
+  cursor: pointer;
+  font-family: "Outfit", "Montserrat", sans-serif;
+  color: #f0bc30;
+  font-size: 24px;
+  padding: 10px;
+  border: 3px solid #303030;
+  border-radius: 5px;
+  background: #131313;
+  margin: 0 auto;
+  box-shadow: 0 0 15px 10px black;
+  text-decoration: none;
+}
+.conteudo .error-text {
+  color: rgb(189, 30, 30);
+  font-size: 16px;
+  font-weight: 500;
+  margin-left: 5px;
+}
+.conteudo .error-field {
+  border: 2px solid rgb(189, 30, 30) !important;
+  background: #2a0000 !important;
+}/*# sourceMappingURL=add-termStyles.css.map */
