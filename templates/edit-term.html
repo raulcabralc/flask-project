@@ -5,18 +5,23 @@
 url_for('static', filename='add-term/add-termStyles.css') }}"
 />
 
-<title>PythonSOS | Adicionar Termo</title>
+<title>PythonSOS | Editar Termo</title>
 
-<h1>Adicionar Termo</h1>
+<h1>Editar Termo: <span id="termo-h1"></span></h1>
 
 <div class="container">
   <h2>Termo:</h2>
-  <input type="text" class="termo" id="termo" placeholder="Nome do termo" />
+  <input
+    type="text"
+    class="termo validate"
+    id="termo"
+    placeholder="Nome do termo"
+  />
 
-  <h2>Descrição do termo:</h2>
+  <h2>Definição do termo:</h2>
   <textarea
     type="text"
-    class="definicao"
+    class="definicao validate"
     id="definicao"
     placeholder="Descrição do termo"
     maxlength="300"

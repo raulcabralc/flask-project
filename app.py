@@ -46,8 +46,8 @@ def criar_termo():
         return render_template("add-term.html")
 
     data = request.get_json()
-    termo = data.get("termo") if data else None
-    definicao = data.get("definicao") if data else None
+    termo = data.get("termo")
+    definicao = data.get("definicao")
 
     if os.path.exists('bd_glossario.csv') and os.path.getsize('bd_glossario.csv') > 0:
         with open('bd_glossario.csv', 'rb') as arquivo:
@@ -75,7 +75,48 @@ def apagar_termo(id):
     
     return redirect(url_for('glossario'))
 
+@app.route("/glossario/editar/<id>", methods=["GET", "POST"])
+def editar_termo(id):
 
+    if request.method == "GET":
+        with open('bd_glossario.csv', 'r', encoding='UTF-8') as arquivo:
+            reader = csv.reader(arquivo, delimiter=';')
+            linhas = list(reader)
+
+            if 1 <= int(id) <= len(linhas):
+                linha_selecionada = linhas[int(id) - 1]
+                
+                if len(linha_selecionada) >= 2:
+                    termo = linha_selecionada[0]
+                    definicao = linha_selecionada[1]
+
+                    if request.headers.get('Content-type') == 'application/json':
+                        return jsonify({"termo": termo, "definicao": definicao})
+                    
+                    return render_template("edit-term.html", termo=termo, definicao=definicao, id=id)
+                
+                else:
+                    return jsonify({"error": "Linha do CSV mal formatada"})
+            else:
+                return jsonify({"error": "ID não encontrado"})
+    
+    if request.method == "POST":
+        data = request.get_json()
+        termoEdit = data.get("termo")
+        definicaoEdit = data.get("definicao")
+
+        with open('bd_glossario.csv', 'r', encoding='UTF-8') as arquivo:
+            reader = csv.reader(arquivo, delimiter=';')
+            linhas = list(reader)
+
+            if 1 <= int(id) <= len(linhas):
+                linhas[int(id) - 1] = [termoEdit, definicaoEdit]
+
+                with open('bd_glossario.csv', 'w', newline="", encoding='UTF-8') as arquivo:
+                    writer = csv.writer(arquivo, delimiter=";")
+                    writer.writerows(linhas)
+
+                return jsonify({"success": "Termo atualizado"})
 
 @app.route('/gemini', methods=['GET', 'POST'])
 def gemini():
@@ -83,7 +124,7 @@ def gemini():
         return render_template("gemini.html")
     
     data = request.get_json()
-    pergunta = data.get("message") if data else None
+    pergunta = data.get("message")
     
     if not pergunta:
         return jsonify({"error": "Por favor, insira uma pergunta."}), 400
@@ -99,6 +140,10 @@ def gemini():
     
     except Exception as e:
         return jsonify({"error": f"Erro ao processar pergunta: {str(e)}"}), 500
+
+@app.errorhandler(404)
+def pageNotFound(error):
+    return render_template("404.html", requestedUrl=request.url)
 
 if __name__ == '__main__':
     app.run(debug=True)

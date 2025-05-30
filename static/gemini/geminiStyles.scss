@@ -1,9 +1,8 @@
 body {
-  overflow-y: hidden;
+  overflow-y: auto;
 }
 
 .conteudo {
-  padding: 20px 190px;
   padding-bottom: 40px;
   display: flex;
   flex-flow: column wrap;
@@ -48,6 +47,10 @@ body {
       height: 40px;
       margin-right: 10px;
     }
+  }
+
+  .chat {
+    padding: 0 190px;
   }
 
   .messages-area {
