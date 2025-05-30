@@ -1,20 +1,46 @@
 from flask import Flask, render_template, request, url_for, redirect, jsonify
 import os
 import csv
-import google.generativeai as genai
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langchain_core.runnables.history import RunnableWithMessageHistory
+from langchain_core.chat_history import BaseChatMessageHistory
+from langchain_community.chat_message_histories import ChatMessageHistory
 from dotenv import load_dotenv
 from markdown import markdown
 
 app = Flask(__name__)
 
 load_dotenv()
-# Carrega as variáveis de ambiente do arquivo .env
 GEMINI_API_KEY = os.getenv("gemini_key")
 if not GEMINI_API_KEY:
     raise ValueError("A variável de ambiente GEMINI_API_KEY não está configurada. Por favor, adicione-a ao seu arquivo .env")
 
-# Configure the Gemini API
-genai.configure(api_key=GEMINI_API_KEY)
+llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", api_key=GEMINI_API_KEY)
+
+# Store para histórico de conversas por sessão
+store = {}
+
+def get_session_history(session_id: str) -> BaseChatMessageHistory:
+    if session_id not in store:
+        store[session_id] = ChatMessageHistory()
+    return store[session_id]
+
+# Novo template de prompt usando ChatPromptTemplate
+prompt = ChatPromptTemplate.from_messages([
+    ("system", """Você é um assistente de programação que ensina em português brasileiro e ajuda pessoas com dificuldade em Python; suas respostas não devem ser muito longas, sem usar símbolos como #, ``` ou markdown; utilize sempre tags HTML: use <code> apenas para mostrar exemplos completos de código com a estrutura exata (<br /><pre><code><div class="code"><span class="text">idade</span> <span class="keyword">=</span> <span class="number">18</span><span class="keyword">if</span> <span class="text">idade</span> <span class="keyword">>=</span> <span class="number">18</span><span class="text">:</span><span class="builtin">print</span><span class="text">(</span><span class="string">"Maior de idade"</span><span class="text">)</span><span class="keyword">elif</span> <span class="text">idade</span> <span class="keyword">>=</span> <span class="number">16</span><span class="text">:</span> <span class="builtin">print</span><span class="text">(</span><span class="string">"Pode votar"</span><span class="text">)</span><span class="keyword">else</span><span class="text">:</span><span class="builtin">print</span><span class="text">(</span><span class="string">"Menor de idade"</span><span class="text">)</span></div></code></pre><br />), sem modificar nada dentro dessa estrutura, é importante que os <br /> sejam colocados no início e no final do <div class="code">; ao mencionar termos como for, if, switch ou métodos como enter, exit, use apenas <span class="code-example">palavra</span>; é proibido usar <code> para destacar termos isolados, use sempre <span class="code-example">; Atente-se na identação do código, ela é de extrema importância; A identação nos exemplos de código são cruciais;"""),
+    MessagesPlaceholder(variable_name="history"),
+    ("human", "{input}")
+])
+
+# Criar a chain com histórico
+chain = prompt | llm
+genai = RunnableWithMessageHistory(
+    chain,
+    get_session_history,
+    input_messages_key="input",
+    history_messages_key="history"
+)
 
 @app.route('/')
 def index():
@@ -130,11 +156,15 @@ def gemini():
         return jsonify({"error": "Por favor, insira uma pergunta."}), 400
     
     try:
-        model = genai.GenerativeModel('gemini-1.5-flash', system_instruction='Você é um assistente de programação que ensina em português brasileiro e ajuda pessoas com dificuldade em Python; suas respostas não devem ser muito longas, sem usar símbolos como #, ``` ou markdown; utilize sempre tags HTML: use <code> apenas para mostrar exemplos completos de código com a estrutura exata (<br /><pre><code><div class="code"><span class="text">idade</span> <span class="keyword">=</span> <span class="number">18</span><span class="keyword">if</span> <span class="text">idade</span> <span class="keyword">>=</span> <span class="number">18</span><span class="text">:</span><span class="builtin">print</span><span class="text">(</span><span class="string">"Maior de idade"</span><span class="text">)</span><span class="keyword">elif</span> <span class="text">idade</span> <span class="keyword">>=</span> <span class="number">16</span><span class="text">:</span> <span class="builtin">print</span><span class="text">(</span><span class="string">"Pode votar"</span><span class="text">)</span><span class="keyword">else</span><span class="text">:</span><span class="builtin">print</span><span class="text">(</span><span class="string">"Menor de idade"</span><span class="text">)</span></div></code></pre><br />), sem modificar nada dentro dessa estrutura, é importante que os <br /> sejam colocados no início e no final do <div class="code">; ao mencionar termos como for, if, switch ou métodos como enter, exit, use apenas <span class="code-example">palavra</span>; é proibido usar <code> para destacar termos isolados, use sempre <span class="code-example">; Atente-se na identação do código, ela é de extrema importância; A identação nos exemplos de código são cruciais;')
+        # Usar uma sessão padrão ou baseada no IP do usuário
+        session_id = request.remote_addr or "default"
         
-        response = model.generate_content(pergunta)
+        response = genai.invoke(
+            {"input": pergunta},
+            config={"configurable": {"session_id": session_id}}
+        )
 
-        htmlResponse = markdown(response.text)
+        htmlResponse = markdown(response.content)
         
         return jsonify({"response": htmlResponse})
     
