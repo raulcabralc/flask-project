@@ -1,5 +1,16 @@
 # PythonSOS
 
+## Demonstração
+
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=8zjr_R8EWJE">
+    <img src="https://img.youtube.com/vi/8zjr_R8EWJE/maxresdefault.jpg" 
+         alt="▶️ Clique para assistir" 
+         style="width:100%;max-width:600px;border-radius:10px;">
+  </a>
+  <p><strong>▶️ Clique na imagem para assistir o vídeo</strong></p>
+</div>
+
 ## Estrutura do site
 
 ### Página Inicial
@@ -22,7 +33,7 @@ A página da equipe contém os quatro integrantes do trabalho:
 
 - Raul Cabral
 - João Lucas
-- Diego Hardman
+- Diego Henrique
 - João Victor
 
 ### Página Glossário
