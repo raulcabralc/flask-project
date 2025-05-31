@@ -2,7 +2,7 @@
 
 ## Estrutura do site
 
-#### Página Inicial
+### Página Inicial
 
 A página inicial explica o que é Python e demonstra exemplos, como:
 
@@ -12,11 +12,11 @@ A página inicial explica o que é Python e demonstra exemplos, como:
 - Funções e procedimentos
 - Tratamentos de exceção
 
-#### Página Gemini
+### Página Gemini
 
 Uma página com o chatbot Gemini AI, ele foi instruído para responder questões direcionadas a Python e ajudar com dúvidas de código em Python.
 
-#### Página Equipe
+### Página Equipe
 
 A página da equipe contém os quatro integrantes do trabalho:
 
@@ -25,36 +25,36 @@ A página da equipe contém os quatro integrantes do trabalho:
 - Diego Hardman
 - João Victor
 
-#### Página Glossário
+### Página Glossário
 
 Uma página que possui um glossário. Permite o usuário criar, visualizar, editar e apagar um termo junto a sua definição.
 
 ## Tecnologias
 
-#### Linguagens
+### Linguagens
 
 - Python
 - JavaScript
 - HTML
 - Scss
 
-#### Frameworks
+### Frameworks
 
 - Flask
 - Langchain
 
-#### Banco de Dados
+### Banco de Dados
 
 - Arquivo CSV
 
 ## Integração do Gemini
 
-1 - Criação da IA, carregando a chave
-2 - Instruções para o comportamento da IA
-3 - Sistema de memória da IA
-4 - Montagem da IA completa, juntando seus componentes
-5 - Rota para receber a pergunta do Front-End
-6 - IA retorna a resposta para o Front-End
+- 1 - Criação da IA, carregando a chave
+- 2 - Instruções para o comportamento da IA
+- 3 - Sistema de memória da IA
+- 4 - Montagem da IA completa, juntando seus componentes
+- 5 - Rota para receber a pergunta do Front-End
+- 6 - IA retorna a resposta para o Front-End
 
 ## Executando a Aplicação
 
