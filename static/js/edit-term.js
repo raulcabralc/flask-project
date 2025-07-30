@@ -95,11 +95,11 @@ class ValidateForm {
       if (!field.value.trim()) {
         valid = false;
         if (field.classList.contains("termo")) {
-          this.createError(field, "Adicione o nome do termo");
+          this.createError(field, "Add the term name");
         }
 
         if (field.classList.contains("definicao")) {
-          this.createError(field, "Adicione uma definição para o termo");
+          this.createError(field, "Add a definition to the term");
         }
       }
     }

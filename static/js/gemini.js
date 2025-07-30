@@ -15,14 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const messageDiv = document.createElement("div");
     messageDiv.className = "message ai-message loading";
     messageDiv.id = "loading-message";
-    messageDiv.innerHTML = `
-                Gemini está pensando...
-                <div class="loading-dots">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            `;
+    messageDiv.innerHTML = "Gemini is thinking...";
     messagesArea.appendChild(messageDiv);
     messagesArea.scrollTop = messagesArea.scrollHeight;
   }
@@ -68,12 +61,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       removeLoadingMessage();
       addMessage(
-        data.response || "Desculpe, não consegui processar sua solicitação."
+        data.response || "Sorry, I couldn't process your information."
       );
     } catch (error) {
-      console.error("Erro ao enviar mensagem:", error);
+      console.error("Error sending message:", error);
       removeLoadingMessage();
-      addMessage("Erro ao conectar com o servidor. Tente novamente.", false);
+      addMessage("Error connecting to server. Try again.", false);
     } finally {
       sendButton.disabled = false;
       userInput.focus();

@@ -14,7 +14,7 @@ app = Flask(__name__)
 load_dotenv()
 GEMINI_API_KEY = os.getenv("gemini_key")
 if not GEMINI_API_KEY:
-    raise ValueError("A variável de ambiente GEMINI_API_KEY não está configurada. Por favor, adicione-a ao seu arquivo .env")
+    raise ValueError("The GEMINI_API_KEY environment variable is not configured. Please, add it to your .env file.")
 
 llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", api_key=GEMINI_API_KEY)
 
@@ -28,7 +28,7 @@ def get_session_history(session_id: str) -> BaseChatMessageHistory:
 
 # Novo template de prompt usando ChatPromptTemplate
 prompt = ChatPromptTemplate.from_messages([
-    ("system", """Você é um assistente de programação que ensina em português brasileiro e ajuda pessoas com dificuldade em Python; suas respostas não devem ser muito longas, sem usar símbolos como #, ``` ou markdown; utilize sempre tags HTML: use <code> apenas para mostrar exemplos completos de código com a estrutura exata (<br /><pre><code><div class="code"><span class="text">idade</span> <span class="keyword">=</span> <span class="number">18</span><span class="keyword">if</span> <span class="text">idade</span> <span class="keyword">>=</span> <span class="number">18</span><span class="text">:</span><span class="builtin">print</span><span class="text">(</span><span class="string">"Maior de idade"</span><span class="text">)</span><span class="keyword">elif</span> <span class="text">idade</span> <span class="keyword">>=</span> <span class="number">16</span><span class="text">:</span> <span class="builtin">print</span><span class="text">(</span><span class="string">"Pode votar"</span><span class="text">)</span><span class="keyword">else</span><span class="text">:</span><span class="builtin">print</span><span class="text">(</span><span class="string">"Menor de idade"</span><span class="text">)</span></div></code></pre><br />), sem modificar nada dentro dessa estrutura, é importante que os <br /> sejam colocados no início e no final do <div class="code">; ao mencionar termos como for, if, switch ou métodos como enter, exit, use apenas <span class="code-example">palavra</span>; é proibido usar <code> para destacar termos isolados, use sempre <span class="code-example">; Atente-se na identação do código, ela é de extrema importância; A identação nos exemplos de código são cruciais;"""),
+    ("system", """You are a programming assistant who teaches in English and helps people with Python difficulties; your answers should not be too long, without using symbols such as #, ``` or markdown; always use HTML tags: use <code> only to show complete code examples with the exact structure: (<br /><pre><code><div class="code"><span class="text">age</span> <span class="keyword">=</span> <span class="number">18</span><span class="keyword">if</span> <span class="text">age</span> <span class="keyword">>=</span> <span class="number">18</span><span class="text">:</span><span class="builtin">print</span><span class="text">(</span><span class="string">"Higher age"</span><span class="text">)</span><span class="keyword">elif</span> <span class="text">age</span> <span class="keyword">>=</span> <span class="number">16</span><span class="text">:</span> <span class="builtin">print</span><span class="text">(</span><span class="string">"Allowed to vote"</span><span class="text">)</span><span class="keyword">else</span><span class="text">:</span><span class="builtin">print</span><span class="text">(</span><span class="string">"Under age"</span><span class="text">)</span></div></code></pre><br />), without modifying a thing in this structure, it is important that the <br /> are placed in the start and end of the <div class="code">; when you mention terms like for, if, switch or methods such as enter, exit, use only <span class="code-example">palavra</span>; the use of <code> to highlight isolated terms is forbidden, instead, use <span class="code-example">; Watch out for code identation, it is incredibly important; The identation in the code examples are crucial;"""),
     MessagesPlaceholder(variable_name="history"),
     ("human", "{input}")
 ])
@@ -122,9 +122,9 @@ def editar_termo(id):
                     return render_template("edit-term.html", termo=termo, definicao=definicao, id=id)
                 
                 else:
-                    return jsonify({"error": "Linha do CSV mal formatada"})
+                    return jsonify({"error": "CSV line formatting is not correct"})
             else:
-                return jsonify({"error": "ID não encontrado"})
+                return jsonify({"error": "ID not found"})
     
     if request.method == "POST":
         data = request.get_json()
@@ -142,7 +142,7 @@ def editar_termo(id):
                     writer = csv.writer(arquivo, delimiter=";")
                     writer.writerows(linhas)
 
-                return jsonify({"success": "Termo atualizado"})
+                return jsonify({"success": "Updated term"})
 
 @app.route('/gemini', methods=['GET', 'POST'])
 def gemini():
@@ -153,7 +153,7 @@ def gemini():
     pergunta = data.get("message")
     
     if not pergunta:
-        return jsonify({"error": "Por favor, insira uma pergunta."}), 400
+        return jsonify({"error": "Please, enter a question."}), 400
     
     try:
         # Usar uma sessão padrão ou baseada no IP do usuário
@@ -169,7 +169,7 @@ def gemini():
         return jsonify({"response": htmlResponse})
     
     except Exception as e:
-        return jsonify({"error": f"Erro ao processar pergunta: {str(e)}"}), 500
+        return jsonify({"error": f"Error processing question: {str(e)}"}), 500
 
 @app.errorhandler(404)
 def pageNotFound(error):

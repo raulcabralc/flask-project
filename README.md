@@ -1,48 +1,47 @@
 # PythonSOS
 
-## Demonstração
+## Demonstration
 
 <div align="center">
   <a href="https://www.youtube.com/watch?v=8zjr_R8EWJE">
     <img src="https://img.youtube.com/vi/8zjr_R8EWJE/maxresdefault.jpg" 
-         alt="▶️ Clique para assistir" 
+         alt="▶️ Click to watch" 
          style="width:100%;max-width:600px;border-radius:10px;">
   </a>
-  <p><strong>▶️ Clique na imagem para assistir o vídeo</strong></p>
+  <p><strong>▶️ Click on the image to watch the video</strong></p>
 </div>
 
-## Estrutura do site
+## Website Structure
 
-### Página Inicial
+### Home Page
 
-A página inicial explica o que é Python e demonstra exemplos, como:
+The home page explains what Python is and demonstrates examples, such as:
 
-- Estruturas de Seleção
-- Estruturas de repetição
-- Vetores e matrizes
-- Funções e procedimentos
-- Tratamentos de exceção
+- Selection Structures
+- Loop Structures
+- Arrays and Matrices
+- Functions and Procedures
+- Exception Handling
 
-### Página Gemini
+### Gemini Page
 
-Uma página com o chatbot Gemini AI, ele foi instruído para responder questões direcionadas a Python e ajudar com dúvidas de código em Python.
+A page with the Gemini AI chatbot, which has been instructed to answer Python-related questions and help with Python code doubts.
 
-### Página Equipe
+### Team Page
 
-A página da equipe contém os quatro integrantes do trabalho:
+The team page contains the four members of the project:
 
 - Raul Cabral
 - João Lucas
-- Diego Henrique
-- João Victor
+- Lucas Andrade
 
-### Página Glossário
+### Glossary Page
 
-Uma página que possui um glossário. Permite o usuário criar, visualizar, editar e apagar um termo junto a sua definição.
+A page that features a glossary. It allows users to create, view, edit, and delete terms along with their definitions.
 
-## Tecnologias
+## Technologies
 
-### Linguagens
+### Languages
 
 - Python
 - JavaScript
@@ -54,23 +53,23 @@ Uma página que possui um glossário. Permite o usuário criar, visualizar, edit
 - Flask
 - Langchain
 
-### Banco de Dados
+### Database
 
-- Arquivo CSV
+- CSV File
 
-## Integração do Gemini
+## Gemini Integration
 
-- 1 - Criação da IA, carregando a chave
-- 2 - Instruções para o comportamento da IA
-- 3 - Sistema de memória da IA
-- 4 - Montagem da IA completa, juntando seus componentes
-- 5 - Rota para receber a pergunta do Front-End
-- 6 - IA retorna a resposta para o Front-End
+- 1 - AI creation, loading the key
+- 2 - Instructions for AI behavior
+- 3 - AI memory system
+- 4 - Complete AI assembly, joining its components
+- 5 - Route to receive questions from the Front-End
+- 6 - AI returns the response to the Front-End
 
-## Executando a Aplicação
+## Running the Application
 
-- Tenha o Python instalado
-- Tenha as dependências instaladas:
+- Have Python installed
+- Have the dependencies installed:
 
   > flask
   > langchain-google-genai
@@ -79,15 +78,15 @@ Uma página que possui um glossário. Permite o usuário criar, visualizar, edit
   > python-dotenv
   > markdown
 
-- Executar o app.py
+- Execute app.py
 
-## Essenciais do app.py
+## App.py Essentials
 
-- Implementação do Gemini AI
-  > Criação e instruções
-- Rotas da aplicação
-  > Rotas estáticas do website
-- Glossário com CRUD
-  > Rotas do glossário para o CRUD
-- Armazenamento em CSV
-  > Guarda, edita e remove dados do arquivo CSV
+- Gemini AI Implementation
+  > Creation and instructions
+- Application Routes
+  > Static website routes
+- Glossary with CRUD
+  > Glossary routes for CRUD operations
+- CSV Storage
+  > Stores, edits, and removes data from CSV file

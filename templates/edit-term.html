@@ -5,31 +5,31 @@
 url_for('static', filename='add-term/add-termStyles.css') }}"
 />
 
-<title>PythonSOS | Editar Termo</title>
+<title>PythonSOS | Edit Term</title>
 
-<h1>Editar Termo: <span id="termo-h1"></span></h1>
+<h1>Edit Term: <span id="termo-h1"></span></h1>
 
 <div class="container">
-  <h2>Termo:</h2>
+  <h2>Term:</h2>
   <input
     type="text"
     class="termo validate"
     id="termo"
-    placeholder="Nome do termo"
+    placeholder="Term name"
   />
 
-  <h2>Definição do termo:</h2>
+  <h2>Term definition:</h2>
   <textarea
     type="text"
     class="definicao validate"
     id="definicao"
-    placeholder="Descrição do termo"
+    placeholder="Term description"
     maxlength="300"
   ></textarea>
 
   <div class="char-counter"><span id="counter">0</span> / 300</div>
 
-  <a href="/glossario" id="button">Salvar Alterações</a>
+  <a href="/glossario" id="button">Save Changes</a>
 </div>
 
 <script src="{{ url_for('static', filename='js/edit-term.js') }}"></script>

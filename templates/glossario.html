@@ -5,21 +5,21 @@
 url_for('static', filename='glossario/glossarioStyles.css') }}"
 />
 
-<title>PythonSOS | Glossário</title>
+<title>PythonSOS | Glossary</title>
 
-<h1>Glossário</h1>
+<h1>Glossary</h1>
 <div class="container">
   <div class="adicionar">
-    <a href="/glossario/adicionar">Adicionar Termo</a>
+    <a href="/glossario/adicionar">Add Term</a>
   </div>
   <div class="table-container">
     <table>
       <thead>
         <tr>
           <th>#</th>
-          <th>Termo</th>
-          <th>Definição</th>
-          <th>Ação</th>
+          <th>Term</th>
+          <th>Definition</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -33,13 +33,13 @@ url_for('static', filename='glossario/glossarioStyles.css') }}"
               class="red"
               id="termo-id {{ loop.index }}"
               href="/glossario/apagar/{{ loop.index }}"
-              >Apagar</a
+              >Delete</a
             >
             <a
               class="blue"
               id="{{ loop.index }}"
               href="/glossario/editar/{{ loop.index }}"
-              >Editar</a
+              >Edit</a
             >
           </td>
         </tr>
